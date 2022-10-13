@@ -14,10 +14,12 @@ export interface TextProps {
     size?: 'sm' | 'md' | 'lg';
     children: ReactNode;
     asChild?: boolean;
+    // O className libera poder adicionar novas propriedades ao componente
+    className?: string;
 }
 
 // { size = 'md'} -> Define que o padrão a ser utilizado é o md
-export function Text({ size = 'md', children, asChild}: TextProps){
+export function Text({ size = 'md', children, asChild, className}: TextProps){
     // Caso esteja sendo recebida a propriedade asChild
     // Se sim, o componente será um <Slot>. 
     // Se não, o componente será um <Span>
@@ -33,7 +35,8 @@ export function Text({ size = 'md', children, asChild}: TextProps){
                     'text-xs': size === 'sm',
                     'text-sm': size === 'md',
                     'text-md': size === 'lg',
-                }
+                },
+                className,
             )}
         >
             {children}
