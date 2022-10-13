@@ -7,6 +7,7 @@ import { Heading } from './components/Heading'
 import { Text } from './components/Text'
 import { TextInput } from './components/TextInput'
 import { Checkbox } from './components/Checkbox'
+import { Button } from './components/Button'
 
 // Importação de ícones
 import { Envelope, Lock } from 'phosphor-react'
@@ -54,6 +55,8 @@ export function App() {
           <Checkbox id="remember"/>
           <Text size="sm" className="text-gray-200">Lembrar de mim por 30 dias</Text> 
         </label>
+
+        <Button type="submit">Entrar na plataforma</Button>
       </form>
 
     </div>
