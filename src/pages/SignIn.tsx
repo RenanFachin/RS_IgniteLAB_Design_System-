@@ -12,15 +12,23 @@ import { Envelope, Lock } from 'phosphor-react'
 // Tipando o evento de SignIn
 import { FormEvent, useState } from 'react'
 
+// Importando o axios para simular conexão com banco de dados
+import axios from 'axios'
+
 export function SignIn(){
   // Criando um estado para simular o login
   // Dica: sempre que a resposta do estado for um valor booleano (V ou F), criar em forma de pergunta
   const [isUserSignedIn, setIsUserSignedIn] = useState(false)
 
   // Simulando o processo de login
-  function handleSignIn(event: FormEvent){
+  async function handleSignIn(event: FormEvent){
     event.preventDefault();
 
+    // Simulando uma conexão com o banco de dados e usando um método http post
+    await axios.post('/sessions', {
+      email: 'renan@email.com',
+      password: '123456789',
+    })
 
     setIsUserSignedIn(true)
   }
