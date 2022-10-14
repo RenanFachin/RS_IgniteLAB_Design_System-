@@ -6,7 +6,10 @@ import '../src/styles/global.css'
 
 import { initialize, mswDecorator } from 'msw-storybook-addon';
 
-initialize();
+initialize({
+  // fazendo não aparecer os logs de requisições não tratadas pelo msw
+  onUnhandledRequest: 'bypass'
+});
 
 export const decorators = [mswDecorator];
 
