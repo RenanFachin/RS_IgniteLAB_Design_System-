@@ -9,7 +9,22 @@ import { Button } from '../components/Button'
 // Importação de ícones
 import { Envelope, Lock } from 'phosphor-react'
 
+// Tipando o evento de SignIn
+import { FormEvent, useState } from 'react'
+
 export function SignIn(){
+  // Criando um estado para simular o login
+  // Dica: sempre que a resposta do estado for um valor booleano (V ou F), criar em forma de pergunta
+  const [isUserSignedIn, setIsUserSignedIn] = useState(false)
+
+  // Simulando o processo de login
+  function handleSignIn(event: FormEvent){
+    event.preventDefault();
+
+
+    setIsUserSignedIn(true)
+  }
+
     return(
         <div className="w-screen h-screen bg-gray-900 flex flex-col items-center justify-center text-gray-100">
       
@@ -25,7 +40,11 @@ export function SignIn(){
           </Text>
         </header>
   
-        <form className="flex flex-col gap-4 items-stretch w-full max-w-[400px] mt-10">
+        <form 
+        onSubmit={handleSignIn} 
+        className="flex flex-col gap-4 items-stretch w-full max-w-[400px] mt-10"
+        >
+          { isUserSignedIn && <Text>Login realizado!</Text>}
           <label htmlFor="email" className="flex flex-col gap-3">
             <Text className="font-semibold">Endereço de e-mail</Text>
             <TextInput.Root>
