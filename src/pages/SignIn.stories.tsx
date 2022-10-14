@@ -8,12 +8,29 @@ import { SignIn } from './SignIn'
 import { within, userEvent, waitFor} from '@storybook/testing-library'
 import { expect } from '@storybook/jest'
 
+// importando o rest - motivo: vai ser requisão rest
+import { rest } from 'msw'
+
 // Exportando a config. global do componente
 export default {
     title: 'Pages/SignIn',
     component: SignIn,
     args: {},
-    argTypes:{}
+    argTypes:{},
+    // config do msw
+    parameters: {
+        msw: {
+            handlers: [
+                // qnd houver um requisição do tipo post para a rota sessions(rest.post('/sessions'))
+                // ctx é o context. utilizado para poder retonar um json
+                rest.post('/sessions', (req, res, ctx) => {
+                    return res(ctx.json({
+                        message: 'Login realizado!'
+                    }))
+                })
+            ]
+        }
+    }
 } as Meta
 
 export const Default: StoryObj = {
